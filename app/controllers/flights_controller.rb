@@ -37,6 +37,7 @@ class FlightsController < ApplicationController
       end
     end
 
+    @flight.seats_left = (a.rows * a.columns)
     respond_to do |format|
       if @flight.save
         format.html { redirect_to @flight, notice: 'Flight was successfully created.' }
