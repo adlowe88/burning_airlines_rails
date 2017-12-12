@@ -15,6 +15,9 @@ class FlightsController < ApplicationController
   # GET /flights/new
   def new
     @flight = Flight.new
+
+
+
   end
 
   # GET /flights/1/edit
@@ -25,6 +28,8 @@ class FlightsController < ApplicationController
   # POST /flights.json
   def create
     @flight = Flight.new(flight_params)
+    a = Airplane.find params[:airplane]
+    @flight.airplane
 
     respond_to do |format|
       if @flight.save

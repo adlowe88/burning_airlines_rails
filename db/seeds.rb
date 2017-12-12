@@ -9,6 +9,8 @@ f1 = Flight.create :origin => "Beijing", :destination => "Hawaii", :date => "01/
 
 a1.flights << f1
 
+f1.update :seats_left => 191
+
 Seat.destroy_all
 
 (1..a1.rows).each do |r|
