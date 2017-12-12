@@ -28,8 +28,14 @@ class FlightsController < ApplicationController
   # POST /flights.json
   def create
     @flight = Flight.new(flight_params)
-    a = Airplane.find params[:airplane]
-    @flight.airplane
+    a = Airplane.find params[:flight][:airplane_id]
+    (1..a.rows).each do |r|
+      (1..a.columns).each do |c|
+        alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+        s = Seat.create :name => "#{r}#{alpha[c]}"
+        @flight.seats << s
+      end
+    end
 
     respond_to do |format|
       if @flight.save
@@ -74,6 +80,6 @@ class FlightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
-      params.fetch(:flight, {})
+      params.require(:flight).permit(:origin, :destination, :date, :airplane_id)
     end
 end
