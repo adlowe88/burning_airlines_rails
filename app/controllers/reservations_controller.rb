@@ -25,7 +25,15 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    @seat = Seat.find params[:reservation][:seat_id]
+    @user = User.find params[:reservation][:user_id]
+    @reservation.seat= @seat
+    @seat.reservation_id= @reservation.id
+    @seat.user= @user
+    @seat.save
 
+    @reservation.update :seat => @seat
+    @seat.update :reservation => @reservation
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
@@ -54,7 +62,12 @@ class ReservationsController < ApplicationController
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
+    @reservation = Reservation.find params[:id]
+    @seat = Seat.find @reservation.seat.id
     @reservation.destroy
+    @seat.user_id= nil
+    @seat.reservation_id= nil
+    @seat.save
     respond_to do |format|
       format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
       format.json { head :no_content }
@@ -69,6 +82,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:user_id, :flight_id)
+      params.require(:reservation).permit(:user_id, :flight_id, :seat_id)
     end
 end
