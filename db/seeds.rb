@@ -23,7 +23,7 @@ end
 
 User.destroy_all
 
-u1 = User.create :name => "John Smith", :dob => "01/01/01"
+u1 = User.create :name => "John Smith", :dob => "01/01/2001"
 
 Reservation.destroy_all
 
