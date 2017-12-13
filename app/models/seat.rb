@@ -12,6 +12,7 @@
 #
 
 class Seat < ApplicationRecord
+  default_scope { order(id: :asc) }
   belongs_to :user, :optional => true
   belongs_to :flight
   belongs_to :reservation, :optional => true
