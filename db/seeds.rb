@@ -1,28 +1,52 @@
 Airplane.destroy_all
 
-a1 = Airplane.create :name => "Boeing 747" , :rows => 32, :columns => 6
+a1 = Airplane.create :name => "Boeing 747", :rows => 32, :columns => 6
 a2 = Airplane.create :name => "Boeing 69", :rows => 69, :columns => 4
+a3 = Airplane.create :name => "Airbus 100", :rows => 22, :columns => 4
+a4 = Airplane.create :name => "Airbus 300", :rows => 60, :columns => 6
+a5 = Airplane.create :name => "Airbus 600", :rows => 80, :columns => 8
+a6 = Airplane.create :name => "Airbus 10000", :rows => 100, :columns => 8
 
 Flight.destroy_all
 
 f1 = Flight.create :origin => "Beijing", :destination => "Hawaii", :date => "01/01/2018"
-f2 = Flight.create :origin => "Australia", :destination => "Japan", :date => "01/01/2018"
-f3 = Flight.create :origin => "USA", :destination => "England", :date => "01/01/2018"
-f4 = Flight.create :origin => "China", :destination => "Canada", :date => "01/01/2018"
+f2 = Flight.create :origin => "Sydney", :destination => "Japan", :date => "01/01/2018"
+f3 = Flight.create :origin => "America", :destination => "England", :date => "01/01/2018"
+f4 = Flight.create :origin => "Maldives", :destination => "", :date => "01/01/2018"
+f5 = Flight.create :origin => "Sweden", :destination => "Portugal", :date => "01/01/2018"
+f6 = Flight.create :origin => "China", :destination => "Canada", :date => "01/01/2018"
 
 a1.flights << f1
-a1.flights << f2
-a1.flights << f3
+a2.flights << f2
+a3.flights << f3
+a4.flights << f4
+a5.flights << f5
+a6.flights << f6
 
 f1.update :seats_left => 191
+f2.update :seats_left => 150
+f3.update :seats_left => 80
+f4.update :seats_left => 23
+f5.update :seats_left => 55
+f6.update :seats_left => 77
 
 Seat.destroy_all
 
 (1..a1.rows).each do |r|
   (1..a1.columns).each do |c|
     alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
-    s = Seat.create :name => "#{r}#{alpha[c]}"
-    f1.seats << s
+    s1 = Seat.create :name => "#{r}#{alpha[c]}"
+    s2 = Seat.create :name => "#{r}#{alpha[c]}"
+    s3 = Seat.create :name => "#{r}#{alpha[c]}"
+    s4 = Seat.create :name => "#{r}#{alpha[c]}"
+    s5 = Seat.create :name => "#{r}#{alpha[c]}"
+    s6 = Seat.create :name => "#{r}#{alpha[c]}"
+    f1.seats << s1
+    f2.seats << s2
+    f3.seats << s3
+    f4.seats << s4
+    f5.seats << s5
+    f6.seats << s6
   end
 end
 
