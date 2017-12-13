@@ -6,8 +6,13 @@ a2 = Airplane.create :name => "Boeing 69", :rows => 69, :columns => 4
 Flight.destroy_all
 
 f1 = Flight.create :origin => "Beijing", :destination => "Hawaii", :date => "01/01/2018"
+f2 = Flight.create :origin => "Australia", :destination => "Japan", :date => "01/01/2018"
+f3 = Flight.create :origin => "USA", :destination => "England", :date => "01/01/2018"
+f4 = Flight.create :origin => "China", :destination => "Canada", :date => "01/01/2018"
 
 a1.flights << f1
+a1.flights << f2
+a1.flights << f3
 
 f1.update :seats_left => 191
 
