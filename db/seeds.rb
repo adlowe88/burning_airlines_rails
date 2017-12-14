@@ -26,9 +26,11 @@ a6.flights << f6
 f1.update :seats_left => 191
 f2.update :seats_left => 150
 f3.update :seats_left => 80
-f4.update :seats_left => 23
-f5.update :seats_left => 55
-f6.update :seats_left => 77
+f4.update :seats_left => 298
+f5.update :seats_left => 590
+f6.update :seats_left => 690
+
+
 
 Seat.destroy_all
 
@@ -36,17 +38,53 @@ Seat.destroy_all
   (1..a1.columns).each do |c|
     alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
     s1 = Seat.create :name => "#{r}#{alpha[c]}"
-    s2 = Seat.create :name => "#{r}#{alpha[c]}"
-    s3 = Seat.create :name => "#{r}#{alpha[c]}"
-    s4 = Seat.create :name => "#{r}#{alpha[c]}"
-    s5 = Seat.create :name => "#{r}#{alpha[c]}"
-    s6 = Seat.create :name => "#{r}#{alpha[c]}"
     f1.seats << s1
+
+  end
+end
+
+(1..a2.rows).each do |r|
+  (1..a2.columns).each do |c|
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    s2 = Seat.create :name => "#{r}#{alpha[c]}"
     f2.seats << s2
+
+  end
+end
+
+(1..a3.rows).each do |r|
+  (1..a3.columns).each do |c|
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    s3 = Seat.create :name => "#{r}#{alpha[c]}"
     f3.seats << s3
+
+  end
+end
+
+(1..a4.rows).each do |r|
+  (1..a4.columns).each do |c|
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    s4 = Seat.create :name => "#{r}#{alpha[c]}"
     f4.seats << s4
+
+  end
+end
+
+(1..a5.rows).each do |r|
+  (1..a5.columns).each do |c|
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    s5 = Seat.create :name => "#{r}#{alpha[c]}"
     f5.seats << s5
+
+  end
+end
+
+(1..a6.rows).each do |r|
+  (1..a6.columns).each do |c|
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    s6 = Seat.create :name => "#{r}#{alpha[c]}"
     f6.seats << s6
+
   end
 end
 
