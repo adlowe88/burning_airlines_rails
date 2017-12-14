@@ -24,11 +24,11 @@ a5.flights << f5
 a6.flights << f6
 
 f1.update :seats_left => 191
-f2.update :seats_left => 150
-f3.update :seats_left => 80
-f4.update :seats_left => 298
-f5.update :seats_left => 590
-f6.update :seats_left => 690
+f2.update :seats_left => 276
+f3.update :seats_left => 88
+f4.update :seats_left => 360
+f5.update :seats_left => 640
+f6.update :seats_left => 800
 
 
 
@@ -45,7 +45,7 @@ end
 
 (1..a2.rows).each do |r|
   (1..a2.columns).each do |c|
-    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h"]
+    alpha = [ nil, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]
     s2 = Seat.create :name => "#{r}#{alpha[c]}"
     f2.seats << s2
 
